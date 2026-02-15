@@ -4,7 +4,8 @@
 
 #include <cuda_runtime.h>
 
-__global__ void add_kernel(const double *A, const double *B, double *C, int N);
+extern "C" __global__ void add_kernel(const double *A, const double *B,
+                                      double *C, int N);
 
 // Error handling macro
 #define CUDA_CHECK(call)                                                       \
