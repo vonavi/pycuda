@@ -1,2 +1,7 @@
 # Build artifacts
 /build/
+
+# Nix develop
+/.direnv/
+/.envrc
+/result
