@@ -9,6 +9,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(pycuda LANGUAGES CUDA CXX)
 
+find_package(CUDAToolkit REQUIRED)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(bin)
