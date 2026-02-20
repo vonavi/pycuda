@@ -48,7 +48,9 @@ int main() {
   CUDA_CHECK(cudaMemcpy(d_B, h_B.data(), bytes, cudaMemcpyHostToDevice));
 
   // Launch kernel
-  add_kernel<<<1, 256>>>(d_A, d_B, d_C, N);
+  void *args[] = {&d_A, &d_B, &d_C, (void *)&N};
+  CUDA_CHECK(cudaLaunchKernel((const void *)add_kernel, dim3(1, 1, 1),
+                              dim3(256, 1, 1), args, 0, nullptr));
   CUDA_CHECK(cudaDeviceSynchronize());
 
   // Copy data from device array d_C to host array C
