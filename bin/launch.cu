@@ -4,6 +4,8 @@
 
 #include <cuda_runtime.h>
 
+__global__ void add_kernel(const double *A, const double *B, double *C, int N);
+
 // Error handling macro
 #define CUDA_CHECK(call)                                                       \
   do {                                                                         \
@@ -14,13 +16,6 @@
       std::exit(EXIT_FAILURE);                                                 \
     }                                                                          \
   } while (0)
-
-// Kernel
-__global__ void add_kernel(const double *A, const double *B, double *C, int N) {
-  int i = blockIdx.x * blockDim.x + threadIdx.x;
-  if (i < N)
-    C[i] = A[i] + B[i];
-}
 
 int main() {
   const int N = 16;
