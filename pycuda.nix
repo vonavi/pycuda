@@ -4,7 +4,7 @@
   # Native build inputs
   autoAddDriverRunpath,
   cmake,
-  cudaPackages
+  cudaPackages,
 }:
 
 stdenv.mkDerivation {
